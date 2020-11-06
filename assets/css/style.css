@@ -2,8 +2,7 @@
   justify-content: center !important;
 }
 
-#searchButton {
-  height: 30px;
+.btn {
   margin-top: 30px;
   margin-left: none;
 }
