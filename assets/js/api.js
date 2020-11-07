@@ -15,11 +15,17 @@ function theAudioDBAPIQuery() {
         "https://www.theaudiodb.com/api/v1/json/1/track.php?m=" + album.idAlbum
       )
         .then((response) => response.json())
-        .then(
-          (data) =>
-            (returnObject[
-              `${album.strArtist} - ${album.strAlbum} - ${runtimeCounter(data)}`
-            ] = data)
+        .then((data) =>
+          returnObject.push([
+            {
+              artist: album.strArtist,
+              album: album.strAlbum,
+              albumDesc: album.strDescriptionEN,
+              albumArt: album.strAlbumCDart,
+              runtime: runtimeCounter(data),
+              tracklist: trackListGetter(data),
+            },
+          ])
         );
     });
   }
@@ -27,16 +33,21 @@ function theAudioDBAPIQuery() {
   return returnObject;
 }
 
-console.log(theAudioDBAPIQuery());
-
 runtimeCounter = (album) => {
   var totalRuntime = 0;
-  console.log(album.track);
   album.track.forEach((track) => {
     totalRuntime += parseInt(track.intDuration);
   });
 
   return msToHMS(totalRuntime);
+};
+
+trackListGetter = (album) => {
+  var trackList = [];
+  album.track.forEach((track) => {
+    trackList.push(track.strTrack);
+  });
+  return trackList;
 };
 
 function msToHMS(ms) {
@@ -51,5 +62,5 @@ function msToHMS(ms) {
   seconds = seconds % 60;
   return hours + ":" + minutes + ":" + parseInt(seconds);
 }
-//TODO: Adder function to get the album runtime from the data
-//Finish the return object for the data
+
+console.log(theAudioDBAPIQuery());
