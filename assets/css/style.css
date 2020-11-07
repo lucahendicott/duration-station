@@ -2,13 +2,17 @@
   justify-content: center !important;
 }
 
-#searchButton {
-  height: 30px;
+.btn {
   margin-top: 30px;
   margin-left: none;
-}
+} 
 
 img {
     height: 350px;
     width: 350px;
+} 
+
+.card {
+  width: 350px;
+  margin-left: 200px;
 }
