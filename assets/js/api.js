@@ -23,9 +23,9 @@ The returned array will look like this:
 */
 
 //Main worker function for API calls
-function theAudioDBAPIQuery() {
+function theAudioDBAPIQuery(search) {
   //TODO: Remove the search param once this is attached to a button
-  var search = prompt("what do you want to search for");
+  //var search = prompt("what do you want to search for");
   //API URL for searching for the album
   var apiURL = `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?a=${search}`;
   //Create the empty array to return at the end of the process
@@ -97,4 +97,4 @@ function msToHMS(ms) {
 }
 
 //TODO: Remove once we have a button
-console.log(theAudioDBAPIQuery());
+console.log(theAudioDBAPIQuery(Homework));
