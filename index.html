@@ -1,14 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Document</title>
-</head>
-<body>
-    <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic neque laboriosam illo totam quod dolorum iure quisquam omnis consequuntur voluptatum, incidunt architec
-    to libero at distinctio vitae molestias facilis reprehenderit. Nemo. -->
-    <script src="./assets/js/app.js"></script>
+  </head>
+  <body>
+    <!-- we will need a contact, about, maybe something else? -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">The Name</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">Blank</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+    <div class="row" id="searchSection">
+        <form action="" class="col s10 m10 l4">
+            <div class="input-field">
+                <input value="" id="search" type="text" placeholder="Search Album Name">
+                <label for="search"></label>
+            </div>
+        </form>
+        <button class="waves-effect waves-light btn">search</button>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="./assets/example-album-art.png">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">This is a link</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+</main>    
+     
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container center-align">
+      © 2020 Forier Transformers
+      </div>
+    </div>
+  </footer>
+
+ <script src="./assets/js/api.js"></script>
 </body>
 </html>
+
