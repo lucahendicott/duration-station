@@ -23,6 +23,7 @@ The returned array will look like this:
 */
 let searchForm = document.getElementById("searchForm");
 let submitSearchBtn = document.getElementById("searchButton");
+let parentCard = document.getElementById("parentCard");
 
 submitSearchBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -50,18 +51,72 @@ function theAudioDBAPIQuery(search) {
         "https://www.theaudiodb.com/api/v1/json/1/track.php?m=" + album.idAlbum
       )
         .then((response) => response.json())
-        .then((data) =>
+        .then(function(data){
           //This is the return object format
-          returnObject.push([
-            {
-              artist: album.strArtist,
-              album: album.strAlbum,
-              albumDesc: album.strDescriptionEN,
-              albumArt: album.strAlbumCDart,
-              runtime: runtimeCounter(data),
-              tracklist: trackListGetter(data),
-            },
-          ])
+            returnObject.push(
+              {
+                artist: album.strArtist,
+                album: album.strAlbum,
+                albumDesc: album.strDescriptionEN,
+                albumArt: album.strAlbumCDart,
+                runtime: runtimeCounter(data),
+                tracklist: trackListGetter(data),
+              },
+            )
+
+            for (let index = 0; index < returnObject.length; index++) {
+              console.log("the thing", returnObject[index].albumArt)
+            
+              let cardDiv = document.createElement("div")
+                cardDiv.className = "card"
+              //Image info
+              let imgDiv = document.createElement("div")
+              let imgURL = returnObject[index].albumArt 
+              let img = document.createElement("img")
+                img.className = "albumArt"
+                imgDiv.className = "card-image waves-effect waves-block waves-light"
+                img.src = imgURL
+              //card content
+              let cardContent = document.createElement("div")
+                cardContent.className = "card-content"
+                //span inside of card content
+              let spanCC = document.createElement("span")
+                spanCC.className = "card-title activator grey-text text-darken-4"
+                  //i content inside of span
+              let iSpan = document.createElement("i")
+                iSpan.className = "material-icons right"
+              //Info
+              let artistCard = document.createElement("p")
+                artistCard.textContent = returnObject[index].artist
+              let albumCard = document.createElement("p")
+                albumCard.textContent = returnObject[index].album
+              let albumDescCard = document.createElement("p")
+                albumDescCard.textContent = returnObject[index].albumDesc
+              let runtimeCard = document.createElement("p")
+                runtimeCard.textContent = returnObject[index].runtime
+              let trackListCard = document.createElement("p")
+                trackListCard.textContent = returnObject[index].tracklist
+              
+             
+              cardDiv.appendChild(imgDiv)
+              imgDiv.appendChild(img)
+              cardDiv.appendChild(cardContent)
+              cardContent.appendChild(spanCC)
+              spanCC.appendChild(artistCard)
+              spanCC.appendChild(albumCard)
+              spanCC.appendChild(albumDescCard)
+              spanCC.appendChild(runtimeCard)
+              spanCC.appendChild(trackListCard)
+              spanCC.appendChild(iSpan)
+              parentCard.appendChild(cardDiv)
+              
+              
+              
+
+
+              
+            }
+          }
         );
     });
   }
