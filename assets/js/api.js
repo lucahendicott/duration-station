@@ -112,7 +112,6 @@ function msToHMS(ms) {
 }
 
 //TODO: Remove once we have a button
-<<<<<<< HEAD
 console.log(theAudioDBAPIQuery());
 
 button.addEventListener("click", function(){
@@ -121,6 +120,3 @@ button.addEventListener("click", function(){
   theAudioDBAPIQuery();
 
 })
-=======
-console.log(theAudioDBAPIQuery(Homework));
->>>>>>> 90a497a8996fb4334de93f0c083dfd905f89d27d
