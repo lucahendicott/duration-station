@@ -21,28 +21,19 @@ The returned array will look like this:
 }
 ]
 */
-let searchForm = document.getElementById("searchForm")
-let button = document.getElementById("searchButton");
-let searchInput = document.getElementById("searchInput");
+let searchForm = document.getElementById("searchForm");
+let submitSearchBtn = document.getElementById("searchButton");
 
-
-
-
-
-
-
-
-
-
-
-searchForm.addEventListener("submit", function(event) {event.preventDefault()})
+submitSearchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  var userSearchInput = document.querySelector("#searchInput");
+  console.log(theAudioDBAPIQuery(userSearchInput.value));
+});
 
 // Main worker function for API calls
-function theAudioDBAPIQuery() {
-  let userSearch = searchInput.value
-  console.log("user search   " + userSearch)
+function theAudioDBAPIQuery(search) {
   //API URL for searching for the album
-  var apiURL = `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?a=` + userSearch;
+  var apiURL = `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?a=${search}`;
   //Create the empty array to return at the end of the process
   var returnObject = [];
   //Function to fetch the album and then call fetching the Album track information
@@ -110,13 +101,3 @@ function msToHMS(ms) {
   seconds = seconds % 60;
   return hours + ":" + minutes + ":" + parseInt(seconds);
 }
-
-//TODO: Remove once we have a button
-console.log(theAudioDBAPIQuery());
-
-button.addEventListener("click", function(){
-
-
-  theAudioDBAPIQuery();
-
-})
