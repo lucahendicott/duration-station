@@ -21,13 +21,28 @@ The returned array will look like this:
 }
 ]
 */
+let searchForm = document.getElementById("searchForm")
+let button = document.getElementById("searchButton");
+let searchInput = document.getElementById("searchInput");
 
-//Main worker function for API calls
-function theAudioDBAPIQuery(search) {
-  //TODO: Remove the search param once this is attached to a button
-  //var search = prompt("what do you want to search for");
+
+
+
+
+
+
+
+
+
+
+searchForm.addEventListener("submit", function(event) {event.preventDefault()})
+
+// Main worker function for API calls
+function theAudioDBAPIQuery() {
+  let userSearch = searchInput.value
+  console.log("user search   " + userSearch)
   //API URL for searching for the album
-  var apiURL = `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?a=${search}`;
+  var apiURL = `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?a=` + userSearch;
   //Create the empty array to return at the end of the process
   var returnObject = [];
   //Function to fetch the album and then call fetching the Album track information
@@ -97,4 +112,11 @@ function msToHMS(ms) {
 }
 
 //TODO: Remove once we have a button
-console.log(theAudioDBAPIQuery(Homework));
+console.log(theAudioDBAPIQuery());
+
+button.addEventListener("click", function(){
+
+
+  theAudioDBAPIQuery();
+
+})
