@@ -40,6 +40,7 @@ function theAudioDBAPIQuery(search) {
   //Function to fetch the album and then call fetching the Album track information
   fetchAlbum = (apiURL) => {
     fetch(apiURL)
+      .then(handleErrors)
       .then((response) => response.json())
       .then((responseJson) => fetchTrackInfo(responseJson));
   };
@@ -48,76 +49,21 @@ function theAudioDBAPIQuery(search) {
     response.album.forEach((album) => {
       //calls fetch on all album names returned from primary function
       fetch(
-        "https://www.theaudiodb.com/api/v1/json/1/track.php?m=" + album.idAlbum
+        `https://www.theaudiodb.com/api/v1/json/1/track.php?m=${album.idAlbum}`
       )
+        .then(handleErrors)
         .then((response) => response.json())
-        .then(function(data){
+        .then(function (data) {
           //This is the return object format
-            returnObject.push(
-              {
-                artist: album.strArtist,
-                album: album.strAlbum,
-                albumDesc: album.strDescriptionEN,
-                albumArt: album.strAlbumCDart,
-                runtime: runtimeCounter(data),
-                tracklist: trackListGetter(data),
-              },
-            )
-
-            for (let index = 0; index < returnObject.length; index++) {
-              console.log("the thing", returnObject[index].albumArt)
-            
-              let cardDiv = document.createElement("div")
-                cardDiv.className = "card"
-              //Image info
-              let imgDiv = document.createElement("div")
-              let imgURL = returnObject[index].albumArt 
-              let img = document.createElement("img")
-                img.className = "albumArt"
-                imgDiv.className = "card-image waves-effect waves-block waves-light"
-                img.src = imgURL
-              //card content
-              let cardContent = document.createElement("div")
-                cardContent.className = "card-content"
-                //span inside of card content
-              let spanCC = document.createElement("span")
-                spanCC.className = "card-title activator grey-text text-darken-4"
-                  //i content inside of span
-              let iSpan = document.createElement("i")
-                iSpan.className = "material-icons right"
-              //Info
-              let artistCard = document.createElement("p")
-                artistCard.textContent = returnObject[index].artist
-              let albumCard = document.createElement("p")
-                albumCard.textContent = returnObject[index].album
-              let albumDescCard = document.createElement("p")
-                albumDescCard.textContent = returnObject[index].albumDesc
-              let runtimeCard = document.createElement("p")
-                runtimeCard.textContent = returnObject[index].runtime
-              let trackListCard = document.createElement("p")
-                trackListCard.textContent = returnObject[index].tracklist
-              
-             
-              cardDiv.appendChild(imgDiv)
-              imgDiv.appendChild(img)
-              cardDiv.appendChild(cardContent)
-              cardContent.appendChild(spanCC)
-              spanCC.appendChild(artistCard)
-              spanCC.appendChild(albumCard)
-              spanCC.appendChild(albumDescCard)
-              spanCC.appendChild(runtimeCard)
-              spanCC.appendChild(trackListCard)
-              spanCC.appendChild(iSpan)
-              parentCard.appendChild(cardDiv)
-              
-              
-              
-
-
-              
-            }
-          }
-        );
+          albumCardGenerator({
+            artist: album.strArtist,
+            album: album.strAlbum,
+            albumDesc: album.strDescriptionEN,
+            albumArt: album.strAlbumCDart,
+            runtime: runtimeCounter(data),
+            tracklist: trackListGetter(data),
+          });
+        });
     });
   }
   fetchAlbum(apiURL);
@@ -133,6 +79,15 @@ runtimeCounter = (album) => {
 
   return msToHMS(totalRuntime);
 };
+
+//handles bad responses from the API
+function handleErrors(response) {
+  if (!response.ok) {
+    alert("Unknown Album, please search again.");
+    throw Error(response.statusText);
+  }
+  return response;
+}
 
 //grabs all tracks on an album and creates an array with their titles
 trackListGetter = (album) => {
@@ -156,3 +111,57 @@ function msToHMS(ms) {
   seconds = seconds % 60;
   return hours + ":" + minutes + ":" + parseInt(seconds);
 }
+
+albumArtFallbackHandler = (albumArtURL) => {
+  if (albumArtURL === null) {
+    return "https://cataas.com/cat/says/No_Album_Art_Found";
+  } else {
+    return albumArtURL;
+  }
+};
+
+albumCardGenerator = (returnObject) => {
+  console.log(returnObject);
+
+  let cardDiv = document.createElement("div");
+  cardDiv.className = "card";
+  //Image info
+  let imgDiv = document.createElement("div");
+  let imgURL = albumArtFallbackHandler(returnObject.albumArt);
+  let img = document.createElement("img");
+  img.className = "albumArt";
+  imgDiv.className = "card-image waves-effect waves-block waves-light";
+  img.src = imgURL;
+  //card content
+  let cardContent = document.createElement("div");
+  cardContent.className = "card-content";
+  //span inside of card content
+  let spanCC = document.createElement("span");
+  spanCC.className = "card-title activator grey-text text-darken-4";
+  //i content inside of span
+  let iSpan = document.createElement("i");
+  iSpan.className = "material-icons right";
+  //Info
+  let artistCard = document.createElement("p");
+  artistCard.textContent = returnObject.artist;
+  let albumCard = document.createElement("p");
+  albumCard.textContent = returnObject.album;
+  let albumDescCard = document.createElement("p");
+  albumDescCard.textContent = returnObject.albumDesc;
+  let runtimeCard = document.createElement("p");
+  runtimeCard.textContent = returnObject.runtime;
+  let trackListCard = document.createElement("p");
+  trackListCard.textContent = returnObject.tracklist;
+
+  cardDiv.appendChild(imgDiv);
+  imgDiv.appendChild(img);
+  cardDiv.appendChild(cardContent);
+  cardContent.appendChild(spanCC);
+  spanCC.appendChild(artistCard);
+  spanCC.appendChild(albumCard);
+  spanCC.appendChild(albumDescCard);
+  spanCC.appendChild(runtimeCard);
+  spanCC.appendChild(trackListCard);
+  spanCC.appendChild(iSpan);
+  parentCard.appendChild(cardDiv);
+};
