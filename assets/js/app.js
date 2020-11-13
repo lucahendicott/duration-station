@@ -53,19 +53,23 @@ albumCardGenerator = (returnObject) => {
   //Info
   //artist name
   let artistCard = document.createElement("div");
+  artistCard.setAttribute("class", "card-text")
   artistCard.textContent = "Artist: " + returnObject.artist;
   //album name
   let albumCard = document.createElement("div");
+  albumCard.setAttribute("class", "card-text")
   albumCard.textContent = "Album Title: " + returnObject.album;
   //album desccription
 
   let albumDescCard = document.createElement("div");
+  albumDescCard.setAttribute("class", "description-text")
   if (returnObject.albumDesc != undefined) {
     albumDescCard.textContent = "Album Description: " + returnObject.albumDesc;
   }
   //album runtime
   let runtimeCard = document.createElement("div");
-  runtimeCard.textContent = "Album Runtime: " + returnObject.runtime;
+  runtimeCard.setAttribute("class", "card-text")
+  runtimeCard.textContent = "Album Duration: " + returnObject.runtime;
 
   //crad image
   cardDiv.appendChild(imgDiv);
@@ -90,14 +94,16 @@ albumCardGenerator = (returnObject) => {
   //album
   //duration
 
-  let trackListUL = document.createElement("ul");
+  let trackListUL = document.createElement("ol");
   trackListUL.innerHTML = "Tracklist: ";
   for (let index = 0; index < returnObject.tracklist.length; index++) {
     //Track List
     let tracklistLI = document.createElement("li");
+    tracklistLI.setAttribute("id", "tracks-text")
     tracklistLI.textContent = returnObject.tracklist[index];
     console.log("arr data  " + returnObject.tracklist[index]);
 
+  
     cardDiv.appendChild(cardReveal);
     cardReveal.appendChild(divCR);
     divCR.appendChild(tracklistContainer);
