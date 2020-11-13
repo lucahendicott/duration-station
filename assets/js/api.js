@@ -37,6 +37,21 @@ let tracklistContainer = document.createElement("div")
 let trackListRow = document.createElement("div")
   trackListRow.className = "row"
 
+  //card reveal
+  let cardReveal = document.createElement("div")
+    cardReveal.className = "card-reveal"
+  
+  //span inside of card reveal
+  let spanCR = document.createElement("span")
+    spanCR.className = "card-title grey-text text-darken-4"
+
+  //i inside of span
+  let iCR = document.createElement("i")
+    iCR.className = "material-icons right"
+  
+  //div inside of card reveal
+  let divCR = document.createElement("div")
+
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   clearOutputDiv("#parentCard");
@@ -120,8 +135,9 @@ trackListGetter = (album) => {
         tracklistLI.textContent = trackList[index]
     console.log("arr data  " + trackList[index])
     
-    cardDiv.appendChild(cardContent);
-    cardContent.appendChild(tracklistContainer);
+    cardDiv.appendChild(cardReveal);
+    cardReveal.appendChild(divCR);
+    divCR.appendChild(tracklistContainer)
     tracklistContainer.appendChild(trackListRow)
     trackListRow.appendChild(trackListUL);
     trackListUL.appendChild(tracklistLI);
@@ -162,37 +178,50 @@ albumCardGenerator = (returnObject) => {
   let imgDiv = document.createElement("div");
   let imgURL = albumArtFallbackHandler(returnObject.albumArt);
   let img = document.createElement("img");
-  img.className = "albumArt";
+  img.className = "albumArt activator";
   imgDiv.className = "card-image waves-effect waves-block waves-light";
   img.src = imgURL;
   
   
   //i content inside of span
   let iSpan = document.createElement("i");
-  iSpan.className = "material-icons right";
+  iSpan.className = "material-icons right iMaincard";
+  iSpan.textContent = "..."
+  
+
+
+
   //Info
+  //artist name
   let artistCard = document.createElement("div");
   artistCard.textContent = "Artist: " + returnObject.artist;
+  //album name
   let albumCard = document.createElement("div");
   albumCard.textContent = "Album Title: " + returnObject.album;
+  //album desccription
   let albumDescCard = document.createElement("div");
   albumDescCard.textContent = "Album Description: " + returnObject.albumDesc;
+  //album runtime
   let runtimeCard = document.createElement("div");
   runtimeCard.textContent = "Album Runtime: " + returnObject.runtime;
 
   
-
+  //crad image
   cardDiv.appendChild(imgDiv);
   imgDiv.appendChild(img);
+  //card content
   cardDiv.appendChild(cardContent);
   cardContent.appendChild(spanCC);
   spanCC.appendChild(artistCard);
   spanCC.appendChild(albumCard);
-  cardContent.appendChild(tracklistContainer);
-  tracklistContainer.appendChild(trackListRow)
-  spanCC.appendChild(albumDescCard);
   spanCC.appendChild(runtimeCard);
   spanCC.appendChild(iSpan);
+  //card reveal
+  cardDiv.appendChild(cardReveal)
+  cardReveal.appendChild(spanCR);
+  spanCR.appendChild(iCR);
+  spanCR.appendChild(albumDescCard);
+  //parent card
   parentCard.appendChild(cardDiv);
 
   //main card
