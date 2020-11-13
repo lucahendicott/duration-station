@@ -25,8 +25,9 @@ let searchForm = document.getElementById("searchForm");
 let submitSearchBtn = document.getElementById("searchButton");
 let parentCard = document.getElementById("parentCard");
 
-submitSearchBtn.addEventListener("click", (e) => {
+searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  clearOutputDiv("#parentCard");
   var userSearchInput = document.querySelector("#searchInput");
   console.log(theAudioDBAPIQuery(userSearchInput.value));
 });
@@ -164,4 +165,11 @@ albumCardGenerator = (returnObject) => {
   spanCC.appendChild(trackListCard);
   spanCC.appendChild(iSpan);
   parentCard.appendChild(cardDiv);
+};
+
+clearOutputDiv = (selector) => {
+  var div = document.querySelector(selector);
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
+  }
 };
