@@ -18,6 +18,10 @@ footer {
   background-color: #1abc9c;
 }
 
+button:hover {
+  background-color: #feca57 !important;
+}
+
 .card {
   width: 350px;
   margin-left: 200px;
