@@ -25,7 +25,11 @@ button:hover {
 
 .card {
   width: 350px;
-  margin-left: 200px;
+  margin-left: 100px;
+  margin-top: auto;
+  float: left;
+  display: block;
+  
 }
 
 body {
