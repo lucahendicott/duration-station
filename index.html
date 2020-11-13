@@ -32,27 +32,30 @@
     <div class="container">
       <div class="row" id="searchSection">
           <form class="col s10 m10 l4" action="" id="searchForm">
-            <input type="text" id="searchInput" value="" placeholder="Search by album name">
+            <input type="text" id="searchInput" value="" placeholder="Search by album name"></input>
+            <div>
             <button class="waves-effect waves-light btn" type="submit" id="searchButton" form="searchForm">Search</button>
-          </form>
-          
+          </div>
+            </form> 
+            </div>  
     </div> 
 
 <div id="parentCard"></div>
     
-<!-- <div class="card">
+<div class="card sticky-action">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="./assets/example-album-art.png">
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-      <p><a href="#">This is a link</a></p>
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">...</i></span>
+      <p><a href="#!">This is a link</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      <div>Here is some more information about this product that is only revealed once clicked on.</div>
     </div>
-  </div> -->
+  </div>
+
 </main>    
      
   <footer class="page-footer">
@@ -62,8 +65,11 @@
       </div>
     </div>
   </footer>
-
- <script src="./assets/js/api.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./assets/js/helperFunctions.js"></script>
+<script src="./assets/js/albumAPIGetter.js"></script>
+<script src="./assets/js/app.js"></script>
 </body>
 </html>
 

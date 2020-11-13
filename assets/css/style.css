@@ -1,6 +1,6 @@
 #searchInput {
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 a {
@@ -13,7 +13,8 @@ footer {
 }
 
 .btn {
-  margin-top: 20px;
+  margin-top: none;
+  position: relative;
   margin-left: 20px;
   background-color: #1abc9c;
 }
@@ -24,7 +25,11 @@ button:hover {
 
 .card {
   width: 350px;
-  margin-left: 200px;
+  margin-left: 100px;
+  margin-top: auto;
+  float: left;
+  display: block;
+  
 }
 
 body {
