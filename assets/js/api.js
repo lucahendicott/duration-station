@@ -24,6 +24,18 @@ The returned array will look like this:
 let searchForm = document.getElementById("searchForm");
 let submitSearchBtn = document.getElementById("searchButton");
 let parentCard = document.getElementById("parentCard");
+let cardDiv = document.createElement("div");
+  cardDiv.className = "card";
+//card content
+let cardContent = document.createElement("div");
+  cardContent.className = "card-content";
+//span inside of card content
+let spanCC = document.createElement("span");
+  spanCC.className = "card-title activator grey-text text-darken-4";
+let tracklistContainer = document.createElement("div")
+  tracklistContainer.className = "container"
+let trackListRow = document.createElement("div")
+  trackListRow.className = "row"
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -99,8 +111,28 @@ trackListGetter = (album) => {
   album.track.forEach((track) => {
     trackList.push(track.strTrack);
   });
+  
+  for (let index = 0; index < trackList.length; index++) {
+    
+    //Track List
+    let trackListUL = document.createElement("ul");
+    let tracklistLI = document.createElement("li");
+        tracklistLI.textContent = trackList[index]
+    console.log("arr data  " + trackList[index])
+    
+    cardDiv.appendChild(cardContent);
+    cardContent.appendChild(tracklistContainer);
+    tracklistContainer.appendChild(trackListRow)
+    trackListRow.appendChild(trackListUL);
+    trackListUL.appendChild(tracklistLI);
+    
+
+    
+  }
   return trackList;
+  
 };
+
 
 //Function I borrowed from stackoverflow to deal with converting milliseconds the API returns for track runtime to a more readable format
 function msToHMS(ms) {
@@ -125,8 +157,7 @@ albumArtFallbackHandler = (albumArtURL) => {
 };
 
 albumCardGenerator = (returnObject) => {
-  let cardDiv = document.createElement("div");
-  cardDiv.className = "card";
+  
   //Image info
   let imgDiv = document.createElement("div");
   let imgURL = albumArtFallbackHandler(returnObject.albumArt);
@@ -134,26 +165,22 @@ albumCardGenerator = (returnObject) => {
   img.className = "albumArt";
   imgDiv.className = "card-image waves-effect waves-block waves-light";
   img.src = imgURL;
-  //card content
-  let cardContent = document.createElement("div");
-  cardContent.className = "card-content";
-  //span inside of card content
-  let spanCC = document.createElement("span");
-  spanCC.className = "card-title activator grey-text text-darken-4";
+  
+  
   //i content inside of span
   let iSpan = document.createElement("i");
   iSpan.className = "material-icons right";
   //Info
-  let artistCard = document.createElement("p");
+  let artistCard = document.createElement("div");
   artistCard.textContent = "Artist: " + returnObject.artist;
-  let albumCard = document.createElement("p");
+  let albumCard = document.createElement("div");
   albumCard.textContent = "Album Title: " + returnObject.album;
-  let albumDescCard = document.createElement("p");
+  let albumDescCard = document.createElement("div");
   albumDescCard.textContent = "Album Description: " + returnObject.albumDesc;
-  let runtimeCard = document.createElement("p");
+  let runtimeCard = document.createElement("div");
   runtimeCard.textContent = "Album Runtime: " + returnObject.runtime;
-  let trackListCard = document.createElement("p");
-  trackListCard.textContent = "Tracklist: " + returnObject.tracklist;
+
+  
 
   cardDiv.appendChild(imgDiv);
   imgDiv.appendChild(img);
@@ -161,11 +188,19 @@ albumCardGenerator = (returnObject) => {
   cardContent.appendChild(spanCC);
   spanCC.appendChild(artistCard);
   spanCC.appendChild(albumCard);
+  cardContent.appendChild(tracklistContainer);
+  tracklistContainer.appendChild(trackListRow)
   spanCC.appendChild(albumDescCard);
   spanCC.appendChild(runtimeCard);
-  spanCC.appendChild(trackListCard);
   spanCC.appendChild(iSpan);
   parentCard.appendChild(cardDiv);
+
+  //main card
+  //artist name
+  //album
+  //duration
+
+  //reveal the rest of the shit
 };
 
 clearOutputDiv = (selector) => {
