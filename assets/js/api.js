@@ -173,7 +173,8 @@ albumArtFallbackHandler = (albumArtURL) => {
 };
 
 albumCardGenerator = (returnObject) => {
-  
+  let cardDiv = document.createElement("div");
+  cardDiv.className = "card";
   //Image info
   let imgDiv = document.createElement("div");
   let imgURL = albumArtFallbackHandler(returnObject.albumArt);
@@ -187,7 +188,8 @@ albumCardGenerator = (returnObject) => {
   let iSpan = document.createElement("i");
   iSpan.className = "material-icons right iMaincard";
   iSpan.textContent = "..."
-  
+  let cardContent = document.createElement("div");
+  cardContent.className = "card-content";
 
 
 
@@ -203,7 +205,7 @@ albumCardGenerator = (returnObject) => {
   albumDescCard.textContent = "Album Description: " + returnObject.albumDesc;
   //album runtime
   let runtimeCard = document.createElement("div");
-  runtimeCard.textContent = "Album Runtime: " + returnObject.runtime;
+  runtimeCard.textContent = "Album Duration: " + returnObject.runtime;
 
   
   //crad image

@@ -28,7 +28,7 @@ button:hover {
   margin-left: 100px;
   margin-top: auto;
   float: left;
-  display: block;
+  /* display: block; */
   
 }
 
