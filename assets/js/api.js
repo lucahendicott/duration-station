@@ -29,7 +29,7 @@ searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   clearOutputDiv("#parentCard");
   var userSearchInput = document.querySelector("#searchInput");
-  console.log(theAudioDBAPIQuery(userSearchInput.value));
+  theAudioDBAPIQuery(userSearchInput.value);
 });
 
 // Main worker function for API calls
@@ -37,7 +37,6 @@ function theAudioDBAPIQuery(search) {
   //API URL for searching for the album
   var apiURL = `https://www.theaudiodb.com/api/v1/json/1/searchalbum.php?a=${search}`;
   //Create the empty array to return at the end of the process
-  var returnObject = [];
   //Function to fetch the album and then call fetching the Album track information
   fetchAlbum = (apiURL) => {
     fetch(apiURL)
@@ -47,28 +46,32 @@ function theAudioDBAPIQuery(search) {
   };
   //Helper function to grab the track info and return it to the return object
   function fetchTrackInfo(response) {
-    response.album.forEach((album) => {
-      //calls fetch on all album names returned from primary function
-      fetch(
-        `https://www.theaudiodb.com/api/v1/json/1/track.php?m=${album.idAlbum}`
-      )
-        .then(handleErrors)
-        .then((response) => response.json())
-        .then(function (data) {
-          //This is the return object format
-          albumCardGenerator({
-            artist: album.strArtist,
-            album: album.strAlbum,
-            albumDesc: album.strDescriptionEN,
-            albumArt: album.strAlbumCDart,
-            runtime: runtimeCounter(data),
-            tracklist: trackListGetter(data),
+    if (response.album != null) {
+      response.album.forEach((album) => {
+        //calls fetch on all album names returned from primary function
+        fetch(
+          `https://www.theaudiodb.com/api/v1/json/1/track.php?m=${album.idAlbum}`
+        )
+          .then(handleErrors)
+          .then((response) => response.json())
+          .then(function (data) {
+            //This is the return object format
+            albumCardGenerator({
+              artist: album.strArtist,
+              album: album.strAlbum,
+              albumDesc: album.strDescriptionEN,
+              albumArt: album.strAlbumCDart,
+              runtime: runtimeCounter(data),
+              tracklist: trackListGetter(data),
+            });
           });
-        });
-    });
+      });
+    } else {
+      alert("Unknown Album, Please Search Again.");
+    }
   }
+
   fetchAlbum(apiURL);
-  return returnObject;
 }
 
 //Used to grab all tracks in an album and then add together their runtime and return it as an integer
@@ -122,8 +125,6 @@ albumArtFallbackHandler = (albumArtURL) => {
 };
 
 albumCardGenerator = (returnObject) => {
-  console.log(returnObject);
-
   let cardDiv = document.createElement("div");
   cardDiv.className = "card";
   //Image info
