@@ -114,7 +114,7 @@ function msToHMS(ms) {
 }
 
 albumArtFallbackHandler = (albumArtURL) => {
-  if (albumArtURL === null) {
+  if (albumArtURL === null || albumArtURL === "") {
     return "https://cataas.com/cat/says/No_Album_Art_Found";
   } else {
     return albumArtURL;
