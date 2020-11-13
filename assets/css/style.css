@@ -1,0 +1,44 @@
+#searchInput {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+a {
+  margin-left: 30px;
+}
+
+nav,
+footer {
+  background-color: #9b59b6 !important;
+}
+
+.btn {
+  margin-top: none;
+  position: relative;
+  margin-left: 20px;
+  background-color: #1abc9c;
+}
+
+button:hover {
+  background-color: #feca57 !important;
+}
+
+.card {
+  width: 350px;
+  margin-left: 200px;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.albumArt {
+  height: 350px;
+  width: 350px;
+}
