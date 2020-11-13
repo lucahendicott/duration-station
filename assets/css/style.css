@@ -7,6 +7,8 @@
 /* title of our app */
 .brand-logo {
   margin-left: 50px;
+  font-family: 'Goldman', cursive;
+  position: relative;
 }
 
 /* about page link */
@@ -77,4 +79,29 @@ main {
 .albumArt {
   height: 350px;
   width: 350px;
+}
+
+/* styles for our signatures on about page  */
+.signatures{
+  font-style: italic;
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+/* properties for the about description */
+.about-text{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* properties for the about page header */
+.about-header{
+  margin-top: 50px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
