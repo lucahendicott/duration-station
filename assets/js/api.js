@@ -144,15 +144,15 @@ albumCardGenerator = (returnObject) => {
   iSpan.className = "material-icons right";
   //Info
   let artistCard = document.createElement("p");
-  artistCard.textContent = returnObject.artist;
+  artistCard.textContent = "Artist: " + returnObject.artist;
   let albumCard = document.createElement("p");
-  albumCard.textContent = returnObject.album;
+  albumCard.textContent = "Album Title: " + returnObject.album;
   let albumDescCard = document.createElement("p");
-  albumDescCard.textContent = returnObject.albumDesc;
+  albumDescCard.textContent = "Album Description: " + returnObject.albumDesc;
   let runtimeCard = document.createElement("p");
-  runtimeCard.textContent = returnObject.runtime;
+  runtimeCard.textContent = "Album Runtime: " + returnObject.runtime;
   let trackListCard = document.createElement("p");
-  trackListCard.textContent = returnObject.tracklist;
+  trackListCard.textContent = "Tracklist: " + returnObject.tracklist;
 
   cardDiv.appendChild(imgDiv);
   imgDiv.appendChild(img);
