@@ -81,13 +81,6 @@ main {
   width: 350px;
 }
 
-/* styles for our signatures on about page  */
-.signatures{
-  font-style: italic;
-  margin-top: 100px;
-  margin-left: 200px;
-}
-
 /* properties for the about description */
 .about-text{
   margin-left: 50px;
