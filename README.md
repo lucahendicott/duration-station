@@ -1,6 +1,6 @@
 https://github.com/lucahendicott/duration-station
 
-
+![DurationStation](./Duration-Station1.png)
 
 ***// . ## ## ##- Duration station. -## ## ## . \\***
 
