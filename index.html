@@ -8,56 +8,69 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
+    <title>Duration Station</title>
   </head>
   <body>
     <!-- we will need a contact, about, maybe something else? -->
+    <main>
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">The Name</a>
+        <a href="./index.html" class="brand-logo">Duration Station</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="">About</a></li>
-          <li><a href="">Contact</a></li>
-          <li><a href="">Blank</a></li>
+          <li><a id="about-section" href="./about.html">About</a></li>
         </ul>
       </div>
     </nav>
-    <main>
-    <div class="row" id="searchSection">
-        <form action="" class="col s10 m10 l4">
-            <div class="input-field">
-                <input value="" id="search" type="text" placeholder="Search Album Name">
-                <label for="search"></label>
-            </div>
-        </form>
-        <button class="waves-effect waves-light btn">search</button>
-    </div>
-</div>
 
-<div class="card">
+    <!--input form  -->
+    <!-- button will need css work -->
+    <!-- search section will need css to center -->
+
+    <!-- cover art and track listing -->
+
+    <div class="container">
+      <div class="row" id="searchSection">
+          <form class="col s10 m10 l4" action="" id="searchForm">
+            <input type="text" id="searchInput" value="" placeholder="Search by album name"></input>
+            <div>
+            <button class="waves-effect waves-light btn" type="submit" id="searchButton" form="searchForm">Search</button>
+          </div>
+            </form> 
+            </div>  
+    </div> 
+
+<div id="parentCard"></div>
+    
+<!-- <div class="card sticky-action">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="./assets/example-album-art.png">
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-      <p><a href="#">This is a link</a></p>
+      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">...</i></span>
+      <p><a href="#!">This is a link</a></p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      <div>Here is some more information about this product that is only revealed once clicked on.</div>
     </div>
-  </div>
+  </div> -->
+
 </main>    
      
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container center-align">
-      © 2020 Forier Transformers
+      © 2020 Fourier Transformers
       </div>
     </div>
   </footer>
-
- <script src="./assets/js/api.js"></script>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./assets/js/helperFunctions.js"></script>
+<script src="./assets/js/albumAPIGetter.js"></script>
+<script src="./assets/js/app.js"></script>
 </body>
 </html>
 
