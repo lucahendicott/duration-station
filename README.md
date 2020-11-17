@@ -11,7 +11,7 @@ https://github.com/lucahendicott/duration-station
 
 ### Introduction ###
 
-## A quote from out director:
+## A quote from our director:
 
 "The purpose of this app is very simple. Say your friend tells you that you MUST check out Ariana Grande's new album ASAP! However, you might be a busy person. You might be thinking, “Okay maybe I can squeeze the album in on my way to work 🤔 , but I know I’m going to love it so much, I don’t want to start the album and be cut off before I can finish it! 😭 ” Welp! This app allows you to search any album by any artist and it will return to you the album runtime. It’s as simple as that. The app will also display the artist name, album title, an album description if one is available and the album track list. The idea started from just displaying an album runtime and evolved into sort of a mini album encyclopedia generator! What fun!" -lucahendicott
 
