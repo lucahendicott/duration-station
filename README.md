@@ -1,5 +1,7 @@
 <img src="https://img.shields.io/badge/LICENSE-mit-green"/>
 
+# Duration Station
+
 https://github.com/lucahendicott/duration-station
 
 ![DurationStation](./Duration-Station1.png)
