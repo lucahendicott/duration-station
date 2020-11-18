@@ -67,7 +67,7 @@ I for myself learned I need to figure out something im particularly good at as t
 
 ##~~***
 
-[presentation link](https://docs.google.com/presentation/d/1C9eNQZKM5zw5GYqRW5zU0_UqN9FzVQj5jC5q2XZh86U/edit?usp=sharing)
+[presentation link](https://docs.google.com/presentation/d/1C9eNQZKM5zw5GYqRW5zU0_UqN9FzVQj5jC5q2XZh86U/edit?usp=sharing)<br>
 [Deployed app](https://lucahendicott.github.io/duration-station/)
 
 https://github.com/lucahendicott/duration-station
