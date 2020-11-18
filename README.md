@@ -2,8 +2,6 @@
 
 # Duration Station
 
-https://github.com/lucahendicott/duration-station
-
 ![DurationStation](./Duration-Station1.png)
 
 ***// . ## ## ##- Duration station. -## ## ## . \\***
@@ -70,6 +68,6 @@ I for myself learned I need to figure out something im particularly good at as t
 ##~~***
 
 [presentation link](https://docs.google.com/presentation/d/1C9eNQZKM5zw5GYqRW5zU0_UqN9FzVQj5jC5q2XZh86U/edit?usp=sharing)
-
+[Deployed app](https://lucahendicott.github.io/duration-station/)
 
 https://github.com/lucahendicott/duration-station
